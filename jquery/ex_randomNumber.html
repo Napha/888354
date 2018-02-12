@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ex_randomNumber</title>
+	<style type="text/css">
+		h1{
+			text-align: center;
+		}
+	</style>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.js"> </script>
+	<script type="text/javascript">
+
+		$(document).ready(function(){
+			$("#random").click(function(){ 	
+				var num1= Math.floor(Math.random() * 100) + 1;
+				var num2= Math.floor(Math.random() * 100) + 1;
+				var sum = num1 + num2;	
+				console.log(sum);
+				$("#ran_num01").html(num1);
+				$("#ran_num02").html(num2);
+				$("#sum_hidden").val(sum);
+			});
+		});
+		$(document).ready(function(){
+			$("#send_ans").click(function(){
+				var check = $("#sum_hidden").val();
+				var ans = $("#num_input").val();
+				if(ans == check) {
+					$("#result").html("Correct");
+				}else {
+					$("#result").html("That's wrong.The answer is.");
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<h1>Ex-Random Number for Answer</h1>
+	<div align="center">
+		<button id="random" class="ran">random number</button>
+		<br><br>
+		<span id="ran_num01">  </span>+<span id="ran_num02">  </span> =
+		<input type="text" name="num_input" id="num_input">
+		<input type="hidden" name="sum" id="sum_hidden">
+		<br><br>
+		<button id="send_ans">send answer</button>
+		<br><br>
+		<span>Result : </span>
+		<span id="result"></span>
+	</div>
+
+</body>
+</html>

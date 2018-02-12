@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ex_high light</title>
+	<style type="text/css">
+		.highlight{
+			background-color: yellow;
+		}
+	</style>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.js"> </script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#C_search").click(function(){
+				var search_txt = $("#search_text").val();
+				// console.log(search_txt);
+				highLight(search_txt);
+			});
+		});
+
+		function highLight(search_txt){
+			if(search_txt){
+				var content = $("p").text();
+				var search = new RegExp(search_txt, "ig");
+				var match = content.match(search);
+				var count_match = match.length;
+				$("#result").html(count_match);
+				if(match){
+					$("p").html(content.replace(search, function (match){
+						return "<span class = 'highlight'>" + match + "</span>";
+					}));
+				}
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<div align="center">
+		<h1>Ex-highLight Text</h1>
+		<br><br>
+		<SPAN>Search : </SPAN>
+		<input type="text" name="search_text" id="search_text">
+		<br><br>
+		<button id="C_search">search</button>
+		<br><br>
+		<span>Found: </span><span id="result"></span>
+	</div>
+	<div class="context">
+		<p>
+		The Article : Continuous Digital Health
+
+		The way we deal with our health is undergoing a major transformation, 
+		not only because mobile Internet technology has made it possible to 
+		have continuous access to personal health information, but also because 
+		breaking the trend of ever-growing healthcare costs is increasingly necessary. 
+		Estimates indicate that more than 70 percent of the world population 
+		will have a smartphone by 2017. Connectivity, interoperability, sensing, 
+		and instant feedback through smartphones all provide new opportunities for gaining 
+		insights into our health behavior. Such insights are improving, and understanding 
+		what motivates people to make healthy changes throughout their lifetimes is becoming 
+		more important. Internet technology not only lets us continuously monitor an 
+		individual's physiological and psychological state, but also allows for building 
+		up a lifelong record of physical, mental, and social health.
+		</p>
+	</div>
+
+</body>
+</html>
